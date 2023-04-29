@@ -20,6 +20,11 @@ mongoose
 
 app.use('/api/users', userRouter);
 
+app.get('/api/test', (req, res) => {
+  console.log('Connected to backend');
+  res.status(200).json({ message: 'Connected to backend' });
+});
+
 app.listen(PORT, () =>
   console.log(`Server running on port http://localhost:${PORT}`)
 );

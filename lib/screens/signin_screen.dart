@@ -1,4 +1,4 @@
-import 'package:first_project/screens/signin_screen.dart';
+import 'package:first_project/screens/signup_screen.dart';
 import 'package:first_project/services/auth_services.dart';
 import 'package:flutter/material.dart';
 
@@ -7,25 +7,24 @@ import '../commons/inputs.dart';
 import '../commons/texts.dart';
 import '../constants/global_variables.dart';
 
-class SignUpScreen extends StatefulWidget {
-  const SignUpScreen({super.key});
+class SignInScreen extends StatefulWidget {
+  const SignInScreen({super.key});
 
   @override
-  State<SignUpScreen> createState() => _SignUpScreen();
+  State<SignInScreen> createState() => _SignInScreenState();
 }
 
-class _SignUpScreen extends State<SignUpScreen> {
+class _SignInScreenState extends State<SignInScreen> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  final TextEditingController nameController = TextEditingController();
   final AuthService authService = AuthService();
 
-  void signupUser() {
-    authService.signUpUser(
-        context: context,
-        email: emailController.text,
-        name: nameController.text,
-        password: passwordController.text);
+  void loginUser() {
+    authService.signInUser(
+      context: context,
+      email: emailController.text,
+      password: passwordController.text,
+    );
   }
 
   @override
@@ -75,20 +74,8 @@ class _SignUpScreen extends State<SignUpScreen> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 const SizedBox(height: 72),
-                const BigText(text: 'Register'),
+                const BigText(text: 'Log In'),
                 const SizedBox(height: 38),
-                const LabelText(
-                  text: 'Name',
-                ),
-                const SizedBox(height: 8),
-                Container(
-                  height: 48,
-                  child: CustomTextField(
-                    controller: nameController,
-                    hintText: 'Enter your name',
-                  ),
-                ),
-                const SizedBox(height: 16),
                 const LabelText(
                   text: 'Email',
                 ),
@@ -112,28 +99,44 @@ class _SignUpScreen extends State<SignUpScreen> {
                     hintText: 'Enter your password',
                   ),
                 ),
-                const SizedBox(
-                  height: 16,
-                ),
-                const SizedBox(height: 32),
+                const SizedBox(height: 18),
+                RichText(
+                    text: const TextSpan(children: [
+                  TextSpan(
+                      text: 'Forgot password? ',
+                      style: TextStyle(
+                          fontFamily: 'Montserrat',
+                          fontSize: 15,
+                          fontWeight: FontWeight.normal,
+                          color: Color(0xFF476348))),
+                  TextSpan(
+                      text: 'Recover here',
+                      style: TextStyle(
+                          fontFamily: 'Montserrat',
+                          fontSize: 15,
+                          fontWeight: FontWeight.w600,
+                          color: Color(0xFF476348)))
+                ])),
+                const SizedBox(height: 42),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     PrimaryButton(
-                      text: 'Register',
-                      onPressed: signupUser,
+                      text: 'Log In',
+                      onPressed: loginUser,
                     ),
                     const SizedBox(
                       width: 16,
                     ),
                     SecondaryButton(
-                        text: 'Log In ',
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const SignInScreen()));
-                        })
+                      text: 'Register',
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const SignUpScreen()));
+                      },
+                    )
                   ],
                 )
               ],
