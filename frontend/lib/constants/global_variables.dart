@@ -7,5 +7,5 @@ class GlobalVariables {
   static const blackColor = Color.fromRGBO(73, 84, 74, 1);
   static const buttonWhiteColor = Color.fromRGBO(224, 225, 224, 1);
   static const inputWhiteColor = Color.fromRGBO(244, 244, 244, 1);
-  static String uri = 'http://172.30.66.121:3500';
+  static String uri = 'http://10.0.2.2:8000';
 }

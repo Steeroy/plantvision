@@ -6,8 +6,7 @@ import 'package:first_project/constants/global_variables.dart';
 import 'package:first_project/constants/utils.dart';
 import 'package:first_project/models/user.dart';
 import 'package:first_project/providers/user_provider.dart';
-import 'package:first_project/screens/home_screen.dart';
-import 'package:first_project/screens/signup_screen.dart';
+import 'package:first_project/screens/main_home.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
@@ -55,7 +54,7 @@ class AuthService {
                 'x-auth-token', jsonDecode(res.body)['token']);
             navigator.pushAndRemoveUntil(
                 MaterialPageRoute(
-                  builder: (context) => const HomeScreen(),
+                  builder: (context) => const MainHomeScreen(),
                 ),
                 (route) => false);
           });
@@ -91,7 +90,7 @@ class AuthService {
                 'x-auth-token', jsonDecode(res.body)['token']);
             navigator.pushAndRemoveUntil(
                 MaterialPageRoute(
-                  builder: (context) => const HomeScreen(),
+                  builder: (context) => const MainHomeScreen(),
                 ),
                 (route) => false);
           });
@@ -144,7 +143,7 @@ class AuthService {
     prefs.setString('x-auth-token', '');
     navigator.pushAndRemoveUntil(
       MaterialPageRoute(
-        builder: (context) => const SignUpScreen(),
+        builder: (context) => const MainHomeScreen(),
       ),
       (route) => false,
     );
