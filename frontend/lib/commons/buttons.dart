@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:first_project/constants/global_variables.dart';
 import 'package:flutter/material.dart';
 
 class PrimaryButton extends StatelessWidget {
@@ -106,5 +107,94 @@ class ThirdButton extends StatelessWidget {
           text,
           textAlign: TextAlign.center,
         ));
+  }
+}
+
+class BigPrimaryButton extends StatelessWidget {
+  final String text;
+  final VoidCallback onPressed;
+
+  const BigPrimaryButton({
+    super.key,
+    required this.text,
+    required this.onPressed,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: double.infinity,
+      height: 48,
+      child: ElevatedButton(
+        style: ButtonStyle(
+          overlayColor: MaterialStateProperty.all<Color>(
+            const Color.fromARGB(255, 192, 213, 226),
+          ),
+          backgroundColor: MaterialStateProperty.all<Color>(
+            const Color(0xFFFEFEFE),
+          ),
+          elevation: MaterialStateProperty.all<double>(
+            0,
+          ),
+        ),
+        onPressed: onPressed,
+        child: Text(
+          text,
+          style: const TextStyle(
+            color: GlobalVariables.backgroundColor,
+            fontFamily: 'Montserrat',
+            fontSize: 18,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class BigSecondaryButton extends StatelessWidget {
+  final String text;
+  final VoidCallback onPressed;
+
+  const BigSecondaryButton({
+    super.key,
+    required this.text,
+    required this.onPressed,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        border: Border.all(
+          color: const Color(0xFFFEFEFE),
+          width: 2.0,
+        ),
+        borderRadius: BorderRadius.circular(6),
+      ),
+      width: double.infinity,
+      height: 48,
+      child: ElevatedButton(
+        style: ButtonStyle(
+            overlayColor: MaterialStateProperty.all<Color>(
+              const Color.fromARGB(255, 192, 213, 226),
+            ),
+            backgroundColor: MaterialStateProperty.all<Color>(
+                GlobalVariables.backgroundColor),
+            elevation: MaterialStateProperty.all<double>(
+              0,
+            )),
+        onPressed: onPressed,
+        child: Text(
+          text,
+          style: const TextStyle(
+            color: Color(0xFFFEFEFE),
+            fontFamily: 'Montserrat',
+            fontSize: 18,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+      ),
+    );
   }
 }
